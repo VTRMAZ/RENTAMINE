@@ -1,0 +1,17 @@
+<h1>Données de mon dictionnaire</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Clé</th>
+            <th>Valeur</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for key, value in data.items %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
