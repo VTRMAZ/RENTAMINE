@@ -3,7 +3,7 @@ from django.shortcuts import render
 def display_data(request):
     # Code pour calculer les données de DICO
     # ...
-
+    '''
     import selenium
     from selenium import webdriver
     from selenium.webdriver.common.by import By
@@ -300,14 +300,9 @@ def display_data(request):
 
 
 
+    '''
 
-
-
-
-
-
-
-
+    DICO = {"clé1": "ETH", "clé2": "valeur2", "clé3": "valeur3"}
 
 
 
