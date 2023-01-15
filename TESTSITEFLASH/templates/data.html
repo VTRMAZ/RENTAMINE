@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Data</title>
-</head>
-<body>
-  <h1>Informations sur une personne</h1>
-  <ul>
-    {% for key, value in data.items() %}
-    <li>{{ key }} : {{ value }}</li>
-    {% endfor %}
-  </ul>
-</body>
-</html>
+<table>
+    <thead>
+        <tr>
+            <th>Coin</th>
+            <th>Ratio</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for coin, ratio in data %}
+        <tr>
+            <td>{{ coin }}</td>
+            <td>{{ ratio }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

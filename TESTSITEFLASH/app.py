@@ -1,7 +1,7 @@
 import gunicorn
 
 import app as app
-from flask import Flask, jsonify
+from flask import Flask, render_template
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -294,7 +294,7 @@ def main():
     browser.quit()
     data=DICO
 
-    return jsonify(data)
+    return render_template("data.html", data=data)
 
 if __name__ == "__main__":
     app.run(debug=True)
