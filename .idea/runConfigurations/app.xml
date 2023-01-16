@@ -1,16 +1,15 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="PPfini" type="PythonConfigurationType" factoryName="Python" singleton="false" nameIsGenerated="true">
+  <configuration default="false" name="app" type="PythonConfigurationType" factoryName="Python" singleton="false" nameIsGenerated="true">
     <module name="RENTAMINE" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
-    <option name="SDK_HOME" value="F:\PYCHARM\venv\Scripts\python.exe" />
-    <option name="SDK_NAME" value="Python 3.10 (PYCHARM)" />
-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PP/main" />
-    <option name="IS_MODULE_SDK" value="false" />
+    <option name="SDK_HOME" value="" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TESTSITEFLASH" />
+    <option name="IS_MODULE_SDK" value="true" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PP/main/PPfini.py" />
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TESTSITEFLASH/app.py" />
     <option name="PARAMETERS" value="" />
     <option name="SHOW_COMMAND_LINE" value="true" />
     <option name="EMULATE_TERMINAL" value="false" />

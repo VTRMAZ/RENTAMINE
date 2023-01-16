@@ -1,4 +1,4 @@
-import gunicorn
+#import gunicorn
 
 import app as app
 from flask import Flask, render_template
@@ -129,11 +129,11 @@ def main():
         chaine = ['Etchash', 'Ethash', 'KawPow', 'Equihash 125,4', 'RandomX', 'Lyra2REv2', 'Skein', 'Autolykos 2',
                   'Eaglesong', 'kHeavyHash', 'Octopus', 'Cuckoo Cycle', 'ProgPow', 'FiroPoW', 'BeamHash', 'Equihash 210,9']
         # cest good  faire teste xpath for all mais teste plus rapide sur 50
-        #browser.find_element(By.XPATH, '//*[@id="coins_length"]/label/select/option[3]').click()
+        browser.find_element(By.XPATH, '//*[@id="coins_length"]/label/select/option[3]').click()
         # ca marcche en balle pour changer de page
 
-        Yourhash = float(input("Rentre ton hash\n"))
-
+        #Yourhash = float(input("Rentre ton hash\n"))
+        Yourhash=270
         for i in range(1, nb_max):
             try:
                 EMISSION1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[5]/div'.format(i))
@@ -287,7 +287,7 @@ def main():
                     continue
 
 
-    tout(30)
+    tout(100)
     DICO = sorted(DICO.items(), key=lambda x: x[1])
     DICO = list(reversed(DICO))
     print(DICO)
