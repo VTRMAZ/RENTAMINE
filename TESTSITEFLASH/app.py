@@ -13,7 +13,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from time import sleep
 
 # from subprocess import CREATE_NO_WINDOW  # Windows only
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 #gunicorn app:app commande pour lancer
 
 @app.route("/")
@@ -43,7 +43,6 @@ def main():
     ratio_Equihash2109 = 7 / 1350000
     DICO = {}
     liste = []
-
 
     def transfo(i, Yourhash, ratio):
         NETWORKHASH1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[11]'.format(i))
@@ -110,7 +109,8 @@ def main():
         ACRONYME1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[2]/div/small'.format(i))
         ALGO1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[3]/div'.format(i))
         PRICE1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[6]/span'.format(i))
-        print(f"{i} - ", NAME1.text, ACRONYME1.text, ALGO1.text, PRICE1.text, EMISSION1.text, NETWORKHASH1.text, resultat,
+        print(f"{i} - ", NAME1.text, ACRONYME1.text, ALGO1.text, PRICE1.text, EMISSION1.text, NETWORKHASH1.text,
+              resultat,
               "$")
         NAME1 = str(NAME1.text)
         ACRONYME1 = str(ACRONYME1.text)
@@ -123,17 +123,17 @@ def main():
         # liste.append(resultat)
         # liste.append(NAME1)
 
-
     def tout(nb_max):
         # chaine a completer
         chaine = ['Etchash', 'Ethash', 'KawPow', 'Equihash 125,4', 'RandomX', 'Lyra2REv2', 'Skein', 'Autolykos 2',
-                  'Eaglesong', 'kHeavyHash', 'Octopus', 'Cuckoo Cycle', 'ProgPow', 'FiroPoW', 'BeamHash', 'Equihash 210,9']
+                  'Eaglesong', 'kHeavyHash', 'Octopus', 'Cuckoo Cycle', 'ProgPow', 'FiroPoW', 'BeamHash',
+                  'Equihash 210,9']
         # cest good  faire teste xpath for all mais teste plus rapide sur 50
         browser.find_element(By.XPATH, '//*[@id="coins_length"]/label/select/option[3]').click()
         # ca marcche en balle pour changer de page
 
-        #Yourhash = float(input("Rentre ton hash\n"))
-        Yourhash=270
+        Yourhash = float(input("Rentre ton hash\n"))
+
         for i in range(1, nb_max):
             try:
                 EMISSION1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[5]/div'.format(i))
@@ -141,8 +141,7 @@ def main():
                 NETWORKHASH1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[11]'.format(i))
                 ALGO1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[3]/div'.format(i))
                 for j in range(0, 15):
-                    if (NETWORKHASH1.text and PRICE1.text and EMISSION1.text and ALGO1.text == chaine[
-                        j]):  # faut aussi sup si c'est egale a zero car apres div par 0
+                    if (NETWORKHASH1.text and PRICE1.text and EMISSION1.text and ALGO1.text == chaine[j]):  # faut aussi sup si c'est egale a zero car apres div par 0
                         if chaine[j] == chaine[0] or chaine[j] == chaine[1]:
                             transfo(i, Yourhash, ratio_etc_ethash)
 
@@ -150,8 +149,10 @@ def main():
                             transfo(i, Yourhash, ratio_Kapow)
 
                         elif chaine[j] == chaine[3]:
-                            NETWORKHASH1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[11]'.format(i))
-                            EMISSION1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[5]/div'.format(i))
+                            NETWORKHASH1 = browser.find_element(By.XPATH,
+                                                                '//*[@id="coins"]/tbody/tr[{}]/td[11]'.format(i))
+                            EMISSION1 = browser.find_element(By.XPATH,
+                                                             '//*[@id="coins"]/tbody/tr[{}]/td[5]/div'.format(i))
 
                             NETWORKHASH2 = str(NETWORKHASH1.text)
                             EMISSION2 = str(EMISSION1.text)
@@ -247,8 +248,7 @@ def main():
                     NETWORKHASH1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[11]'.format(i))
                     ALGO1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[3]/div'.format(i))
                     for j in range(0, 15):
-                        if (NETWORKHASH1.text and PRICE1.text and EMISSION1.text and ALGO1.text == chaine[
-                            j]):  # faut aussi sup si c'est egale a zero car apres div par 0
+                        if (NETWORKHASH1.text and PRICE1.text and EMISSION1.text and ALGO1.text == chaine[j]):  # faut aussi sup si c'est egale a zero car apres div par 0
                             if chaine[j] == chaine[0] or chaine[j] == chaine[1]:
                                 transfo(i, Yourhash, ratio_etc_ethash)
 
@@ -286,12 +286,12 @@ def main():
                 except:
                     continue
 
-
     tout(100)
     DICO = sorted(DICO.items(), key=lambda x: x[1])
     DICO = list(reversed(DICO))
     print(DICO)
     browser.quit()
+
     data=DICO
 
     return render_template("data.html", data=data)

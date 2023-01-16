@@ -1,35 +1,21 @@
 from django.shortcuts import render
-
+import selenium
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+from time import sleep
 def display_data(request):
-    # Code pour calculer les données de DICO
-    # ...
-
-    #import selenium
-    from selenium import webdriver
-    from selenium.webdriver.common.by import By
-    #from selenium.webdriver.common.keys import Keys
-    from selenium.webdriver.chrome.options import Options
-    from selenium.webdriver.chrome.service import Service
-    #from selenium.webdriver.support import expected_conditions
-    # selenium.webdriver.support.wait import WebDriverWait
-    from time import sleep
-
-    #from subprocess import CREATE_NO_WINDOW  # Windows only
-
-    chrome_options = Options()
+    chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument('window-size=1920x1080')
-
-    chrome_service = Service('chromedriver')
-
-    #chrome_service.creationflags = CREATE_NO_WINDOW
-
-    browser = webdriver.Chrome(options=chrome_options, executable_path='D:\GITHUB\RENTAMINE\PP\chromedriver.exe')
-
+    browser = webdriver.Chrome(options=chrome_options)
     url = 'https://miningpoolstats.stream/'
-
     browser.get(url)
-    sleep(5)  # Ce n'est pas la meilleure méthode...
+    sleep(5)
 
     ratio_etc_ethash = 1
     ratio_Kapow = 0.451852
@@ -296,16 +282,8 @@ def display_data(request):
     tout(100)
     DICO = sorted(DICO.items(), key=lambda x: x[1])
     DICO = list(reversed(DICO))
-
-
-
-
-
-
-
-
-
-
+    print(DICO)
+    browser.quit()
 
     data = DICO # Récupérer les données de votre dictionnaire
     return render(request, 'template_name.html', {'data': data})
