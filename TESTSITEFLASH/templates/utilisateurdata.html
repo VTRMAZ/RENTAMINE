@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulaire de saisie</title>
+  </head>
+  <body>
+    <form action="{{ url_for('testhtml') }}" method="POST">
+        <label>Entrez une valeur:</label>
+        <input type="text" name="user_value">
+        <input type="submit" value="Envoyer">
+    </form>
+  </body>
+</html>

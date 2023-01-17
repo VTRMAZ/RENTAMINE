@@ -1,7 +1,7 @@
 #import gunicorn
 
 import app as app
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -15,6 +15,17 @@ from time import sleep
 # from subprocess import CREATE_NO_WINDOW  # Windows only
 app = Flask(__name__, static_folder='static')
 #gunicorn app:app commande pour lancer
+
+
+@app.route('/testhtml', methods=['POST'])
+def testhtml():
+    def process():
+        YourHash = request.form.get('user_value')
+        return YourHash
+    return render_template("utilisateurdata.html")
+
+
+
 
 @app.route("/")
 def main():
@@ -132,8 +143,8 @@ def main():
         browser.find_element(By.XPATH, '//*[@id="coins_length"]/label/select/option[3]').click()
         # ca marcche en balle pour changer de page
 
-        Yourhash = float(input("Rentre ton hash\n"))
-
+        #Yourhash = float(input("Rentre ton hash\n"))
+        Yourhash=testhtml()
         for i in range(1, nb_max):
             try:
                 EMISSION1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[5]/div'.format(i))
