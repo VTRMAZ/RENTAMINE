@@ -1,18 +1,18 @@
-
-
-
-
-
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Formulaire de saisie</title>
+    <title>Entrer une valeur pour Yourhash</title>
   </head>
   <body>
-    <form action="{{ url_for('testhtml') }}" method="POST">
-        <label>Entrez une valeur:</label>
-        <input type="text" name="user_value">
-        <input type="submit" value="Envoyer">
-    </form>
+    <header>
+      <h1>Entrer une valeur pour Yourhash</h1>
+    </header>
+    <main>
+        <form action="/" method="GET">
+            <label for="Yourhash">Yourhash :</label>
+            <input type="text" id="Yourhash" name="Yourhash">
+            <input type="submit" value="Valider">
+        </form>
+    </main>
   </body>
 </html>
