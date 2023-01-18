@@ -11,7 +11,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from time import sleep
-'''
+
 # from subprocess import CREATE_NO_WINDOW  # Windows only
 app = Flask(__name__, static_folder='static')
 #gunicorn app:app commande pour lancer
@@ -313,7 +313,7 @@ def main():
             print(DICO)
             browser.quit()
 
-            data=DICO
+            data=DICO[1]
         return render_template('index.html', data=data)
 
 
@@ -330,10 +330,10 @@ def index():
     result = None
     if request.method == 'POST':
         value = request.form['value']
-        result = int(value) * 2
+        result = [int(value) * 2]
     return render_template('index.html', result=result)
 
 if __name__ == '__main__':
     app.run()
 
-
+'''
