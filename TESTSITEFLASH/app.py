@@ -11,7 +11,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from time import sleep
-
+'''
 # from subprocess import CREATE_NO_WINDOW  # Windows only
 app = Flask(__name__, static_folder='static')
 #gunicorn app:app commande pour lancer
@@ -20,8 +20,16 @@ app = Flask(__name__, static_folder='static')
 
 @app.route("/", methods=['GET','POST'])
 def main():
+        data = None
+        DICO=None
         if request.method=='POST':
             yourhash = request.form['Yourhash']
+
+
+
+
+
+
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument("--headless")
             chrome_options.add_argument('window-size=1920x1080')
@@ -247,7 +255,7 @@ def main():
                     except:
                         continue
 
-                for z in range(1, 6):
+                for z in range(1, 2):
                     button = browser.find_element(By.XPATH, '//*[@id="coins_next"]/a')
                     browser.execute_script("arguments[0].click();", button)
                     for i in range(1, nb_max):
@@ -304,9 +312,9 @@ def main():
             DICO = list(reversed(DICO))
             print(DICO)
             browser.quit()
-            data=DICO
 
-        return render_template("data.html", data=data)
+            data=DICO
+        return render_template('index.html', data=data)
 
 
 if __name__ == "__main__":
@@ -327,5 +335,5 @@ def index():
 
 if __name__ == '__main__':
     app.run()
-'''
+
 
