@@ -11,7 +11,7 @@ from time import sleep
 from subprocess import CREATE_NO_WINDOW  # Windows only
 
 chrome_options = Options()
-chrome_options.add_argument("--headless") 
+chrome_options.add_argument("--headless")
 chrome_options.add_argument('window-size=1920x1080')
 
 chrome_service = Service('chromedriver')
@@ -42,9 +42,9 @@ ratio_Beamhash = 23 / 45000000
 ratio_Equihash2109 = 7 / 1350000
 DICO = {}
 liste = []
+yourhash=270
 
-
-def transfo(i, Yourhash, ratio):
+def transfo(i, yourhash, ratio):
     NETWORKHASH1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[11]'.format(i))
     EMISSION1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[5]/div'.format(i))
 
@@ -103,7 +103,7 @@ def transfo(i, Yourhash, ratio):
                     emissionfloat = emissionfloat * (1000)
                     break
 
-    resultat = ((Yourhash * ratio) / networkfloat) * emissionfloat
+    resultat = ((yourhash * ratio) / networkfloat) * emissionfloat
 
     NAME1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[2]/div/a/b'.format(i))
     ACRONYME1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[2]/div/small'.format(i))
@@ -123,7 +123,7 @@ def transfo(i, Yourhash, ratio):
     # liste.append(NAME1)
 
 
-def tout(nb_max):
+def tout(nb_max,yourhash):
     # chaine a completer
     chaine = ['Etchash', 'Ethash', 'KawPow', 'Equihash 125,4', 'RandomX', 'Lyra2REv2', 'Skein', 'Autolykos 2',
               'Eaglesong', 'kHeavyHash', 'Octopus', 'Cuckoo Cycle', 'ProgPow', 'FiroPoW', 'BeamHash', 'Equihash 210,9']
@@ -131,7 +131,7 @@ def tout(nb_max):
     browser.find_element(By.XPATH, '//*[@id="coins_length"]/label/select/option[3]').click()
     # ca marcche en balle pour changer de page
 
-    Yourhash = float(input("Rentre ton hash\n"))
+    #yourhash = float(input("Rentre ton hash\n"))
 
     for i in range(1, nb_max):
         try:
@@ -143,10 +143,10 @@ def tout(nb_max):
                 if (NETWORKHASH1.text and PRICE1.text and EMISSION1.text and ALGO1.text == chaine[
                     j]):  # faut aussi sup si c'est egale a zero car apres div par 0
                     if chaine[j] == chaine[0] or chaine[j] == chaine[1]:
-                        transfo(i, Yourhash, ratio_etc_ethash)
+                        transfo(i, yourhash, ratio_etc_ethash)
 
                     elif chaine[j] == chaine[2]:
-                        transfo(i, Yourhash, ratio_Kapow)
+                        transfo(i, yourhash, ratio_Kapow)
 
                     elif chaine[j] == chaine[3]:
                         NETWORKHASH1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[11]'.format(i))
@@ -208,29 +208,29 @@ def tout(nb_max):
                                         break
                                         # copier le sous prog et modife len-6
                     elif chaine[j] == chaine[4]:
-                        transfo(i, Yourhash, ratio_RandomX)
+                        transfo(i, yourhash, ratio_RandomX)
                     elif chaine[j] == chaine[5]:
-                        transfo(i, Yourhash, ratio_Lyra2rew2)
+                        transfo(i, yourhash, ratio_Lyra2rew2)
                     elif chaine[j] == chaine[6]:
-                        transfo(i, Yourhash, ratio_Skein)
+                        transfo(i, yourhash, ratio_Skein)
                     elif chaine[j] == chaine[7]:
-                        transfo(i, Yourhash, ratio_Autolykos2)
+                        transfo(i, yourhash, ratio_Autolykos2)
                     elif chaine[j] == chaine[8]:
-                        transfo(i, Yourhash, ratio_eaglesong)
+                        transfo(i, yourhash, ratio_eaglesong)
                     elif chaine[j] == chaine[9]:
-                        transfo(i, Yourhash, ratio_kKeavyhash)
+                        transfo(i, yourhash, ratio_kKeavyhash)
                     elif chaine[j] == chaine[10]:
-                        transfo(i, Yourhash, ratio_octopus)
+                        transfo(i, yourhash, ratio_octopus)
                     elif chaine[j] == chaine[11]:
-                        transfo(i, Yourhash, ratio_Cuckoocycle)
+                        transfo(i, yourhash, ratio_Cuckoocycle)
                     elif chaine[j] == chaine[12]:
-                        transfo(i, Yourhash, ratio_ProgPow)
+                        transfo(i, yourhash, ratio_ProgPow)
                     elif chaine[j] == chaine[13]:
-                        transfo(i, Yourhash, ratio_FiroPow)
+                        transfo(i, yourhash, ratio_FiroPow)
                     elif chaine[j] == chaine[14]:
-                        transfo(i, Yourhash, ratio_Beamhash)
+                        transfo(i, yourhash, ratio_Beamhash)
                     elif chaine[j] == chaine[15]:
-                        transfo(i, Yourhash, ratio_Equihash2109)
+                        transfo(i, yourhash, ratio_Equihash2109)
 
 
         except:
@@ -249,44 +249,44 @@ def tout(nb_max):
                     if (NETWORKHASH1.text and PRICE1.text and EMISSION1.text and ALGO1.text == chaine[
                         j]):  # faut aussi sup si c'est egale a zero car apres div par 0
                         if chaine[j] == chaine[0] or chaine[j] == chaine[1]:
-                            transfo(i, Yourhash, ratio_etc_ethash)
+                            transfo(i, yourhash, ratio_etc_ethash)
 
                         elif chaine[j] == chaine[2]:
-                            transfo(i, Yourhash, ratio_Kapow)
+                            transfo(i, yourhash, ratio_Kapow)
 
                         elif chaine[j] == chaine[3]:
-                            transfo(i, Yourhash, ratio_Equihash1254)  # copier le sous prog et modife len-6
+                            transfo(i, yourhash, ratio_Equihash1254)  # copier le sous prog et modife len-6
                         elif chaine[j] == chaine[4]:
-                            transfo(i, Yourhash, ratio_RandomX)
+                            transfo(i, yourhash, ratio_RandomX)
                         elif chaine[j] == chaine[5]:
-                            transfo(i, Yourhash, ratio_Lyra2rew2)
+                            transfo(i, yourhash, ratio_Lyra2rew2)
                         elif chaine[j] == chaine[6]:
-                            transfo(i, Yourhash, ratio_Skein)
+                            transfo(i, yourhash, ratio_Skein)
                         elif chaine[j] == chaine[7]:
-                            transfo(i, Yourhash, ratio_Autolykos2)
+                            transfo(i, yourhash, ratio_Autolykos2)
                         elif chaine[j] == chaine[8]:
-                            transfo(i, Yourhash, ratio_eaglesong)
+                            transfo(i, yourhash, ratio_eaglesong)
                         elif chaine[j] == chaine[9]:
-                            transfo(i, Yourhash, ratio_kKeavyhash)
+                            transfo(i, yourhash, ratio_kKeavyhash)
                         elif chaine[j] == chaine[10]:
-                            transfo(i, Yourhash, ratio_octopus)
+                            transfo(i, yourhash, ratio_octopus)
                         elif chaine[j] == chaine[11]:
-                            transfo(i, Yourhash, ratio_Cuckoocycle)
+                            transfo(i, yourhash, ratio_Cuckoocycle)
                         elif chaine[j] == chaine[12]:
-                            transfo(i, Yourhash, ratio_ProgPow)
+                            transfo(i, yourhash, ratio_ProgPow)
                         elif chaine[j] == chaine[13]:
-                            transfo(i, Yourhash, ratio_FiroPow)
+                            transfo(i, yourhash, ratio_FiroPow)
                         elif chaine[j] == chaine[14]:
-                            transfo(i, Yourhash, ratio_Beamhash)
+                            transfo(i, yourhash, ratio_Beamhash)
                         elif chaine[j] == chaine[15]:
-                            transfo(i, Yourhash, ratio_Equihash2109)
+                            transfo(i, yourhash, ratio_Equihash2109)
 
 
             except:
                 continue
 
 
-tout(100)
+tout(100,yourhash)
 DICO = sorted(DICO.items(), key=lambda x: x[1])
 DICO = list(reversed(DICO))
 print(DICO)
