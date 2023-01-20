@@ -27,7 +27,7 @@ app = Flask(__name__, static_folder='static')
 def main():
         data = None
         if request.method=='POST':
-            yourhash = request.form['Yourhash']
+            yourhash = 270 #request.form['Yourhash']
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument("--headless")
             chrome_options.add_argument('window-size=1920x1080')
@@ -36,7 +36,6 @@ def main():
             browser.get(url)
             sleep(5)
 
-            '''
             ratio_etc_ethash = 1
             ratio_Kapow = 0.451852
             ratio_Equihash1254 = 13 / 13500
@@ -307,14 +306,7 @@ def main():
             data = DICO
             DICO = sorted(DICO.items(), key=lambda x: x[1])
             DICO = list(reversed(DICO))
-            '''
-            #print(DICO)
-            for i in range(1, 1):
-                EMISSION1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[5]/div'.format(i))
-                data = EMISSION1.text
-            browser.quit()
-
-
+           
            # if data==DICO:
                # data=[(000)]
            # elif  data !={}:
@@ -324,7 +316,6 @@ def main():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
 
 
 
@@ -344,10 +335,10 @@ def index():
 if __name__ == '__main__':
     app.run()
 
-
+    '''
 '''
 
-'''
+
         data = None
         if request.method=='POST':
             yourhash = request.form['Yourhash']
