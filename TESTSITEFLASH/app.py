@@ -304,10 +304,10 @@ def main():
             tout(100, yourhash)
             DICO = sorted(DICO.items(), key=lambda x: x[1])
             DICO = list(reversed(DICO))
-            print(DICO)
+            #print(DICO)
             browser.quit()
 
-            data=DICO[1]
+            data=DICO
         return render_template('index.html', data=data)
 
 
