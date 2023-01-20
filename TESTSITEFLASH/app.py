@@ -321,13 +321,13 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    result = None
+    data = None
     if request.method == 'POST':
-        value = request.form['value']
-        result = [int(value) * 2]
-    return render_template('index.html', result=result)
+        data = request.form['Yourhash']
+        data = [int(data) * 2]
+    return render_template('index.html', data=data)
 
 if __name__ == '__main__':
     app.run()
-
 '''
+
