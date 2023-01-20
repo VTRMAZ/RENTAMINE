@@ -15,8 +15,6 @@ from time import sleep
 from flask import Flask, render_template, request
 
 
-
-
 # from subprocess import CREATE_NO_WINDOW  # Windows only
 app = Flask(__name__, static_folder='static')
 #gunicorn app:app commande pour lancer
@@ -27,7 +25,8 @@ app = Flask(__name__, static_folder='static')
 def main():
         data = None
         if request.method=='POST':
-            yourhash = 270 #request.form['Yourhash']
+            yourhash = int(request.form['Yourhash'])
+
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument("--headless")
             chrome_options.add_argument('window-size=1920x1080')
@@ -250,7 +249,7 @@ def main():
                     except:
                         continue
 
-                for z in range(1, 2):
+                for z in range(1, 1):
                     button = browser.find_element(By.XPATH, '//*[@id="coins_next"]/a')
                     browser.execute_script("arguments[0].click();", button)
                     for i in range(1, nb_max):
@@ -303,10 +302,11 @@ def main():
                             continue
 
             tout(100, yourhash)
-            data = DICO
+
             DICO = sorted(DICO.items(), key=lambda x: x[1])
             DICO = list(reversed(DICO))
-           
+            data = DICO
+            browser.quit()
            # if data==DICO:
                # data=[(000)]
            # elif  data !={}:
@@ -329,15 +329,14 @@ def index():
     data = None
     if request.method == 'POST':
         data = request.form['Yourhash']
-        data = [data*2]
+        data = int(data)*2
     return render_template('index.html', data=data)
 
 if __name__ == '__main__':
     app.run()
 
-    '''
 '''
-
+'''
 
         data = None
         if request.method=='POST':
