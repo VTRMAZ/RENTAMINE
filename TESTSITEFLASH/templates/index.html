@@ -1,19 +1,100 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Value Multiplier</title>
+<head>
+    <title>Rentamine</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: black;
+
+        }
+
+        h1 {
+            margin-top: 50px;
+            color:blue;
+        }
+
+        form {
+            margin-top: 30px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color:blue;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #0142d1;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #result {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
   </head>
   <body>
 
-    <h1>Value Multiplier</h1>
+    <h1>Rentamine</h1>
     <form method="post">
-      <label>Enter a value:</label>
+      <label>Ton nombre de MH/s sur ethereum:</label>
       <input type="text" name="Yourhash"><br>
       <input type="submit" value="Submit">
     </form>
-
-    {% if data %}
-    <p>The result is: {{ data }}</p>
-    {% endif %}
+    <table>
+      <thead>
+        <tr>
+          <th>Value</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if data %}
+        <tr>
+          <td>{{ data }}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
   </body>
 </html>

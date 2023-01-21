@@ -61,14 +61,12 @@ def main():
                 EMISSION2 = str(EMISSION1.text)
 
                 lennet = len(NETWORKHASH2)
-                # lenprice=len(PRICE2)
+
                 lenemi = len(EMISSION2)
                 networkchiffre = NETWORKHASH2[0:lennet - 4]
-                # pricechiffre=PRICE1[0:lenprice-1]
                 emissionchiffre = EMISSION2[0:lenemi - 3]
 
                 networkfloat = float(networkchiffre.replace(',', ''))
-                # pricefloat=float(pricechiffre.replace(',',''))
                 emissionfloat = float(emissionchiffre.replace(',', ''))
 
                 for z, c in enumerate(NETWORKHASH2):
@@ -121,14 +119,10 @@ def main():
                 #print(f"{i} - ", NAME1.text, ACRONYME1.text, ALGO1.text, PRICE1.text, EMISSION1.text, NETWORKHASH1.text,resultat,"$")
                 NAME1 = str(NAME1.text)
                 ACRONYME1 = str(ACRONYME1.text)
-                ALGO1 = str(ALGO1.text)
-                PRICE1 = str(PRICE1.text)
 
-                DICO[NAME1] = ACRONYME1  # https://www.delftstack.com/fr/howto/python/dictionary-with-multiple-values-in-python/
+                DICO[NAME1] = ACRONYME1
                 DICO[NAME1] = round(resultat, 4)
 
-                # liste.append(resultat)
-                # liste.append(NAME1)
 
             def tout(nb_max, yourhash):
                 # chaine a completer
@@ -169,14 +163,11 @@ def main():
                                     EMISSION2 = str(EMISSION1.text)
 
                                     lennet = len(NETWORKHASH2)
-                                    # lenprice=len(PRICE2)
                                     lenemi = len(EMISSION2)
                                     networkchiffre = NETWORKHASH2[0:lennet - 6]
-                                    # pricechiffre=PRICE1[0:lenprice-1]
                                     emissionchiffre = EMISSION2[0:lenemi - 3]
 
                                     networkfloat = float(networkchiffre.replace(',', ''))
-                                    # pricefloat=float(pricechiffre.replace(',',''))
                                     emissionfloat = float(emissionchiffre.replace(',', ''))
 
                                     for z, c in enumerate(NETWORKHASH2):
@@ -307,10 +298,7 @@ def main():
             DICO = list(reversed(DICO))
             data = DICO
             browser.quit()
-           # if data==DICO:
-               # data=[(000)]
-           # elif  data !={}:
-                #data = [(111)]
+
         return render_template('index.html', data=data)
 
 
