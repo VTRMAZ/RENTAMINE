@@ -260,8 +260,8 @@ def main():
             tout(100, yourhash)
 
             DICO = sorted(DICO.items(), key=lambda x: x[1]['resultat'], reverse=True)
-            data = DICO
             browser.quit()
+            data = DICO
 
         return render_template('index.html', data=data)
 

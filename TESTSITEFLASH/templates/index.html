@@ -6,7 +6,7 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background-color: black;
+            background-color: white;
 
         }
 
@@ -81,6 +81,7 @@
       <input type="text" name="Yourhash"><br>
       <input type="submit" value="Submit">
     </form>
+    <!--
     <table>
       <thead>
         <tr>
@@ -95,6 +96,25 @@
         </tr>
         {% endif %}
       </tbody>
+    </table>
+     -->
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Acronym</th>
+        <th>Algorithm</th>
+        <th>Result</th>
+        <th>Rewards</th>
+      </tr>
+      {% for data_item in data %}
+        <tr>
+          <td>{{ data[0] }}</td>
+          <td>{{ data[1]['acronyme'] }}</td>
+          <td>{{ data[1]['algo'] }}</td>
+          <td>{{ data[1]['resultat'] }}</td>
+          <td>{{ data[1]['rewards'] }}</td>
+        </tr>
+      {% endfor %}
     </table>
   </body>
 </html>
