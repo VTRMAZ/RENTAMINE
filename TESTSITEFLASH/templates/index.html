@@ -108,11 +108,11 @@
       </tr>
       {% for data_item in data %}
         <tr>
-          <td>{{ data[0] }}</td>
-          <td>{{ data[1]['acronyme'] }}</td>
-          <td>{{ data[1]['algo'] }}</td>
-          <td>{{ data[1]['resultat'] }}</td>
-          <td>{{ data[1]['rewards'] }}</td>
+          <td>{{ data_item[0] }}</td>
+          <td>{{ data_item[1]['acronyme'] }}</td>
+          <td>{{ data_item[1]['algo'] }}</td>
+          <td>{{ data_item[1]['resultat'] }}</td>
+          <td>{{ data_item[1]['rewards'] }}</td>
         </tr>
       {% endfor %}
     </table>
