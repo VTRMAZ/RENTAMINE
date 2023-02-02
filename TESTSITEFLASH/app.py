@@ -118,7 +118,7 @@ def main():
                                 emissionfloat = emissionfloat * (1000)
                                 break
 
-                resultat = ((yourhash * ratio) / networkfloat) * emissionfloat
+                resultat = round(((yourhash * ratio) / networkfloat) * emissionfloat,3)
 
                 NAME1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[2]/div/a/b'.format(i))
                 ACRONYME1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[2]/div/small'.format(i))
@@ -129,7 +129,7 @@ def main():
                 ACRONYME1 = str(ACRONYME1.text)
                 ALGO1 = str(ALGO1.text)
                 PRICE1 = float(PRICE1)
-                REWARDS1 = float(resultat / PRICE1)
+                REWARDS1 = round(float(resultat / PRICE1),3)
 
                 DICO[NAME1] = {'acronyme': ACRONYME1, 'algo': ALGO1, 'resultat': resultat, 'rewards': REWARDS1}
 

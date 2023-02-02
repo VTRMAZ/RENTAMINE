@@ -17,8 +17,7 @@ chrome_options.add_argument('window-size=1920x1080')
 chrome_service = Service('chromedriver')
 chrome_service.creationflags = CREATE_NO_WINDOW
    
-browser = webdriver.Chrome(options=chrome_options, service=chrome_service)
-   
+browser = webdriver.Chrome(options=chrome_options, executable_path='D:\GITHUB\RENTAMINE\PP\chromedriver.exe')
 url='https://miningpoolstats.stream/'
   
       
@@ -130,7 +129,7 @@ def tout(nb_max, yourhash):
     browser.find_element(By.XPATH, '//*[@id="coins_length"]/label/select/option[3]').click()
     browser.find_element(By.XPATH, '//*[@id="coins"]/thead/tr/th[5]').click()
 
-    # yourhash = float(input("Rentre ton hash\n"))
+    #yourhash = float(input("Rentre ton hash\n"))
 
     for i in range(1, nb_max):
         ALGO1 = browser.find_element(By.XPATH, '//*[@id="coins"]/tbody/tr[{}]/td[3]/div'.format(i))

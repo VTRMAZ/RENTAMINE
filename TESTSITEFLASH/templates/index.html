@@ -98,23 +98,27 @@
       </tbody>
     </table>
      -->
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Acronym</th>
-        <th>Algorithm</th>
-        <th>Result</th>
-        <th>Rewards</th>
-      </tr>
-      {% for data_item in data %}
+    {% if data %}
+      <table>
         <tr>
-          <td>{{ data_item[0] }}</td>
-          <td>{{ data_item[1]['acronyme'] }}</td>
-          <td>{{ data_item[1]['algo'] }}</td>
-          <td>{{ data_item[1]['resultat'] }}</td>
-          <td>{{ data_item[1]['rewards'] }}</td>
+          <th>Nom</th>
+          <th>Acronyme</th>
+          <th>Algorithme</th>
+          <th>Résultat</th>
+          <th>Récompenses</th>
         </tr>
-      {% endfor %}
-    </table>
+        {% for data_item in data %}
+          <tr>
+            <td>{{ data_item[0] }}</td>
+            <td>{{ data_item[1].get('acronyme', '') }}</td>
+            <td>{{ data_item[1].get('algo', '') }}</td>
+            <td>{{ data_item[1].get('resultat', '') }}</td>
+            <td>{{ data_item[1].get('rewards', '') }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p>Aucune donnée disponible</p>
+    {% endif %}
   </body>
 </html>
