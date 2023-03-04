@@ -1,16 +1,18 @@
 # RENTAMINE
-Logiciel de rentabilité pour le minage de cryptomonnaiée
+Cost-effective software for cryptocurrency mining
 
 RENTAMINE.py:
-scraping toutes les données sur miningpoolstats et sélectionne les algorithmes pour les gpu.
-Long à l'executer, utiliser RENTAMINE_OPTI.py beaucoup plus rapide.
+Scraping all data on miningpoolstats and selects algorithms for gpu.
+Long to run, use RENTAMINE_OPTI.py much faster.
 
-Exemple de sortie:
+Sample output:
+
 ![img.png](img.png)
 
 RENTAMINE_API.py:
 
-Code fonctionnant avec des APIs, beaucoup plus rapide et précis (inclus la consommation electrique, et le prix du KWh)mais beaucoup moins de coin exotique.
+Code working with APIs, much faster and more accurate (including power consumption, and price per KWh) but much less exotic corner.
 
+Sample output:
 
 ![img_1.png](img_1.png)
